@@ -1,5 +1,26 @@
 # Dynamic Market Exchange — essential guide
 
+## Hackathon entry · `veramzuc`
+
+[**AdaptiveMarket**](src/dme_simulator/agents/veramzuc/agent.py) is a Python agent for the Dynamic Market Exchange pricing hackathon. It competes for raw materials, plans production and adjusts retail prices each turn.
+
+| Decision | Strategy |
+| --- | --- |
+| Bidding | Adjust bids relative to reserve prices based on how much of the previous order cleared. |
+| Production | Rank products by expected margin and check inventory, material supply and cash before committing. |
+| Pricing | Track sell-through and test two price tiers to adjust listings and production to observed demand. |
+
+**Local smoke test.** In the default scenario with seed 42, the agent finished turn 5 with **$26,834.81 in cash**, starting from $12,000. This run used the three built-in opponents.
+
+```bash
+uv sync --locked --python 3.12
+uv run dme-sim --turns 5 --seed 42
+```
+
+The simulator and competition rules come from the organizers. [AIRIC-Polimi · Dynamic Market Exchange](https://github.com/AIRIC-Polimi/pmds-pricing-hackathon)
+
+## Simulator guide
+
 Build an agent that bids for materials, assembles products, and sets sale
 prices. Test it against the built-in agents, then upload it through the page at
 the link provided by the organizers to compete with other teams.
